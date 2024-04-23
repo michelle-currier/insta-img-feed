@@ -1,9 +1,5 @@
 // Replace with your Instagram Access Token
 const accessToken = 'IGQWRNSUJ1bUpQcXJaNXhnUVVtaldQV21pRkhFbGg0dHh5dmc5UW5tNENXWE92QUNvNl9CbmhXUThYNXJYRTVYeENUNUZAINTZAqZAHZAFaUlTdk5DSWlZAZAXJKUGxRQklxUmpqWkhQVjJnYWNjckhIZAklBVl9lcGh3YnMZD';
-// const accessToken = '752988190309698'; // app id
-// 415732744422161 // instagram id
-// IGQWRNSUJ1bUpQcXJaNXhnUVVtaldQV21pRkhFbGg0dHh5dmc5UW5tNENXWE92QUNvNl9CbmhXUThYNXJYRTVYeENUNUZAINTZAqZAHZAFaUlTdk5DSWlZAZAXJKUGxRQklxUmpqWkhQVjJnYWNjckhIZAklBVl9lcGh3YnMZD // token
-// const accessToken = '313ef6220f137e1457bc9a8b733bc69e'; // client token 
 
 // Function to fetch and display Instagram feed
 function getInstagramFeed() {
@@ -16,15 +12,16 @@ function getInstagramFeed() {
             // data.data.forEach(post => {
 
             // Loop through the data in sets of four
-            for (let i = 0; i < data.data.length; i += 4) {
+            for (let i = 0; i < data.data.length && counter < 8; i++) {
             // Create a div to contain each set of four images
+                const post = data.data[i];
                 const postSet = document.createElement('div');
-                postSet.classList.add('post-set');
+                //postSet.classList.add('post-set');
 
                 // Loop through each item in the set of four
-                for (let j = 0; j < 4; j++) {
-                    if (i + j < data.data.length) {
-                        const post = data.data[i + j];
+                // for (let j = 0; j < 4; j++) {
+                //     if (i + j < data.data.length) {
+                //         const post = data.data[i + j];
 
                         const postLink = document.createElement('a');
                         postLink.href = post.permalink;
@@ -38,9 +35,9 @@ function getInstagramFeed() {
                         feedContainer.appendChild(postLink);
 
                         counter++;
-                    }
-                }
-                feedContainer.appendChild(postSet);
+                    //}
+                //}
+                // feedContainer.appendChild(postSet);
             }
         })
         .catch(error => console.error(error));

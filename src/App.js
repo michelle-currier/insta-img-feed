@@ -1,38 +1,35 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import { InstagramEmbed } from 'react-social-media-embed';
-import { IgComponent } from './igConfig';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import About from './about';
+import Home from './home';
+
+import TopNav from './components/TopNav';
+import Footer from './components/footer';
 
 function App() {
   return (
     <div className="App">
-      
       <header className="App-header">
-        <script src='igConfig.js'></script>
-        {/* <IgComponent></IgComponent> */}
-        <h2>Todo add UI framework maybe bootstrap or gatsby!</h2>
-        <p>todo add the scripts to the config once you add the ui</p>
-        <div id="instagram-feed"></div>
-
-       
-        <div>
-          <p>Feed embed here</p>
-          <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-          <InstagramEmbed url="https://www.instagram.com/p/CsRibFlvFXy/"></InstagramEmbed>
-          </div>
-        </div>
-        <img src={logo} className="App-logo" alt="logo" />
-       
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
+        <TopNav></TopNav> 
       </header>
+      <Router>
+        <div>
+          <Switch>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+      <footer>
+        <Footer />
+      </footer>
+      
     </div>
   );
 }
